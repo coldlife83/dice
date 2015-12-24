@@ -1,0 +1,28 @@
+<html>
+	<head>
+		<title>DICE!</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
+		<script src="app.js"></script>
+	</head>
+	<body ng-app="diceApp" ng-controller="DiceCtrl as diceSim">
+		<div ng-repeat="die in diceSim.dice">
+			Sides - {{die.sides}}
+		</div>
+		<form ng-submit="diceSim.addDie()">
+			<input length="5" ng-model="diceSim.newSides">
+			<button type="submit">Add</button>
+		</form>
+		<p>
+			MinRoll:{{diceSim.getMinRoll()}} MaxRoll:{{diceSim.getMaxRoll()}}
+		</p>
+		<div>
+			<button ng-click="diceSim.rollDice()">Simulate Roll</button>
+		</div>
+		<ol>			
+			<li ng-repeat="die in diceSim.dice">Rolled: {{die.upFace}} </li>
+		</ol>
+		<p>
+			Sum: {{diceSim.sumUpFaces()}}
+		</p>
+	</body>
+</html>
